@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1, initial-scale=1.0">
+    <title>Encryption System</title>
+</head>
+
+<body style="background-color: black;color: gray;font-size: 20px;">
+
+    Recommended characters: <br>
+    <i style="font-size: 15px;">1234567890 qwertyuıopğüasdfghjklşizxcvbnmöçQWERTYUIOPĞÜASDFGHJKLŞİZXCVBNMÖÇD</i>
+    <br><br>
+
+    You can create an encryption system here <br>
+    <input type="text" id="input1"><br>
+    <button onclick="O(document.getElementById('input1').value)">Create</button>
+    <div id="result1"></div><br>
+
+    Enter the encryption system to use here <br>
+    <input type="text" id="input2"><br>
+    <!--<button onclick="C()">calistir</button><br>--><br>
+
+    You can enter the system from here and get the output from the same place. <br>
+    <input type="text" id="input3"><br>
+    <button onclick="SG(document.getElementById('input3').value)">Send to system</button><br><br>
+
+    <script>
+        //"1234567890*?\/-_!'£^#+$%&{()={[]}q@wertyuıopğü,;asdfghjklş´izxcvbnmöç:.QWERTYUIOPĞÜASDFGHJKLŞİZXCVBNMÖÇ\"é"
+        function O(X1) {//D2 = ["1","2","3","4"]
+            X = X1
+            if (X.length / 2 == Math.floor(X.length / 2) && !([5, 15, 25, 35, 45, 55, 65, 75, 85, 95, 105, 115].includes(X.length))) {
+                D1 = 0
+                D3 = ""
+                while (X.length != 0) {
+                    D4 = Math.floor(Math.random() * (X.length - 1)) + 1
+                    D3 += "case '" + X[0] + "': return '" + X[D4] + "'; break;"
+                    D3 += "case '" + X[D4] + "': return '" + X[0] + "'; break;"
+
+                    X = ArrayDelte(X, [X[0], X[D4]])
+
+                    if (X.length == 1) {
+                        return O(document.getElementById('input1').value)
+                    }
+                    D1++
+                }
+                document.getElementById("result1").innerText = "function SB1(X1){switch(X1){" + D3 + "default: return '{There is no letter '+X1+'}';}}"
+            } else {
+                alert("Set D2 properly")
+            }
+        }
+
+        function SG(X1) {
+            eval(document.getElementById("input2").value)
+            D1 = 0
+            D2 = ""
+            while (D1 != X1.length) {
+                D2 += SB1(X1[D1])
+                D1++
+            }
+
+            document.getElementById('input3').value = D2
+        }
+
+        function ArrayDelte(X1, X2) {
+            E1 = 0
+            E2 = ""
+            while (X1.length != E1) {
+                if (!(X2.includes(X1[E1]))) {
+                    E2 += X1[E1]
+                }
+                E1++
+            }
+
+            return E2
+        }
+    </script>
+</body>
+
+</html>
